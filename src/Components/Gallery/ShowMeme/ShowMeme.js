@@ -17,15 +17,7 @@ const ShowMeme = () => {
         {gallery.map((m, index) => (
           <div className="pics " key={index}>
            
-        <div className="card-icon d-flex justify-content-end">
-              <small>
-                <FontAwesomeIcon
-                  size="2x"
-                  className="product-wishlist ms-0 m-2"
-                  icon={faHeart}
-                />
-              </small>
-            </div>
+        
             <img style={{ width: "100%" }} src={m.imageURL} alt="" />
             
           </div>

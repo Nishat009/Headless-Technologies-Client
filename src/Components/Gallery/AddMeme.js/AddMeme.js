@@ -1,3 +1,4 @@
+import { Link } from '@material-ui/core';
 import axios from 'axios';
 import React, { useState } from 'react';
 import './AddMeme.css'
@@ -83,6 +84,7 @@ const AddMeme = () => {
 
           <div className="col-md-4 ">
           <button type="submit" class="btn btn-secondary mt-4">Upload Meme</button>
+          <a href="/deleteMeme" type="submit" class="btn btn-secondary mt-4">Delete Meme</a>
           </div>
         </form>
         </div>
