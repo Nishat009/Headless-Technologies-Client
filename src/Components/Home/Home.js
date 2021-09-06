@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <div className= "container">
       <h1 className="header mx-auto mt-1 text-center">Meme Gallery</h1>
-      <Link to="/seeStat">See Stat</Link>
+      <Link to="/seeStat">See Stats</Link>
       <AddMeme></AddMeme>
       <ShowMeme></ShowMeme>
       <Footer></Footer>

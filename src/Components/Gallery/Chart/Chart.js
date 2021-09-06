@@ -38,7 +38,7 @@ const Chart = (data) => {
   return (
     <div className="Container" style={{margin:"0px 150px 150px 150px"}}  >
        
-        <h1 className="Container text-center bg-info mt-1 mx-auto" style={{ width:"300px"}}>Stat</h1>
+        <h1 className="Container text-center bg-info mt-1 mx-auto" style={{ width:"300px"}}>Stats</h1>
       <h3>Meme upload per day last 7 days</h3>
       <div className="" >
         <Line 
