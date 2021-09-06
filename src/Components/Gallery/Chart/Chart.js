@@ -12,7 +12,8 @@ const Chart = (data) => {
       .get("https://tranquil-forest-75801.herokuapp.com/memes")
       .then(res => {
         console.log(res);
-        setGallery(res);
+       
+      ;
         setChartData({
           labels: [moment().format('ll'), moment().add(1, 'days').format('ll'), moment().add(2, 'days').format('ll'), moment().add(3, 'days').format('ll'),moment().add(4, 'days').format('ll'),moment().add(5, 'days').format('ll'), moment().add(6, 'days').format('ll')],
           datasets: [
