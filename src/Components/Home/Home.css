@@ -1,7 +1,7 @@
 .header{
     background-color: aquamarine;
-  
-
+    width:400px;
+   justify-content: center;
   padding: 10px;
 
 }
