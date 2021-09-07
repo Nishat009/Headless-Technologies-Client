@@ -2,7 +2,7 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import "./ShowMeme.css";
-import { Grid } from "@material-ui/core";
+import { GridListTile, Grid, GridList } from "@material-ui/core";
 
 
 const ShowMeme = () => {
@@ -39,12 +39,27 @@ const ShowMeme = () => {
   };
 
   return (
-    <Grid container cols={3}>
+    // <GridList   cols={3} style={{ width: "100%", height: "100%" }} >
+    //     {gallery.map((data) => (
+    //       <GridListTile  key={data.id} cols={data.cols || 1}>
+    //         <img md={4} sm={6} xs={12}  src={data.imageURL || data.link} alt={data.title} />
+    //         <small>
+    //         <FontAwesomeIcon
+    //           onClick={() => handleDelete(data._id)}
+    //           size="2x"
+    //           className="delete-icon"
+    //           icon={faTrash}
+    //         />
+    //       </small>
+    //       </GridListTile>
+    //     ))}
+    //   </GridList>
+    <GridList  cols={3}>
       {gallery.map((item) => (
-        <Grid item md={4} sm={6} xs={12} key={item.img} cols={item.cols || 1}>
+        <GridListTile item md={4} sm={6} xs={12} key={item.id} cols={item.cols || 1}>
           <img
             className="show p-1 m-auto "
-            style={{ height: "260px", width: "100%" }}
+            style={{ height: "300px", width: "100%" }}
             src={item.imageURL || item.link}
             alt=""
           />
@@ -56,9 +71,9 @@ const ShowMeme = () => {
               icon={faTrash}
             />
           </small>
-        </Grid>
+        </GridListTile>
       ))}
-    </Grid>
+    </GridList>
   );
 };
 

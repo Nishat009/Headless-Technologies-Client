@@ -54,6 +54,7 @@ const AddMeme = () => {
     e.preventDefault();
     const memeData = {
       link: e.target.link.value,
+      cols: e.target.cols.value,
     };
 
     try {
@@ -73,7 +74,19 @@ const AddMeme = () => {
     <div className="container mt-4">
       <div className=" row">
         <form class="  col-md-6 d-flex mb-2 " onSubmit={handle}>
-          <div className=" w-75 ">
+          <div style={{width:"50px"}}>
+            <input
+              required
+              type="number"
+              name="cols"
+              min={1}
+              max={2}
+              onBlur={handleBlur}
+              class="form-control"
+              placeholder="cols"
+            />
+          </div>
+           <div className=" w-50 ">
             <input
               required
               type="text"
@@ -83,6 +96,7 @@ const AddMeme = () => {
               placeholder="Link....."
             />
           </div>
+         
           <div>
             <button type="submit" class="btn btn-secondary">
               Add Meme
