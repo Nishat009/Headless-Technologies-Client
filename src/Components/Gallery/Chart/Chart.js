@@ -8,6 +8,7 @@ const Chart = (data) => {
   const [gallery, setGallery] = useState([]);
   const chart = () => {
     let meme = [gallery.length];
+
     axios
       .get("https://tranquil-forest-75801.herokuapp.com/memes")
       .then(res => {
@@ -52,7 +53,7 @@ const Chart = (data) => {
                 {
                   ticks: {
                     autoSkip: true,
-                    maxTicksLimit: 10,
+                    maxTicksLimit: 5,
                     beginAtZero: true,
                     
                   },

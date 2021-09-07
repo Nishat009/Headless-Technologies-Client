@@ -54,9 +54,13 @@ const ShowMeme = () => {
     //       </GridListTile>
     //     ))}
     //   </GridList>
-    <GridList  cols={3}>
+<div>
+<GridList   cols={3}>
       {gallery.map((item) => (
-        <GridListTile item md={4} sm={6} xs={12} key={item.id} cols={item.cols || 1}>
+    
+          
+          <GridListTile item colsSm={12}  key={item.id} cols={item.cols || 1}>
+            {/* <h1>Time:{new Date(item.time).toDateString()}</h1> */}
           <img
             className="show p-1 m-auto "
             style={{ height: "300px", width: "100%" }}
@@ -70,10 +74,17 @@ const ShowMeme = () => {
               className="delete-icon"
               icon={faTrash}
             />
-          </small>
+          
+          </small> 
         </GridListTile>
+     
+     
+    
+     
       ))}
-    </GridList>
+    </GridList> 
+    
+</div>
   );
 };
 
