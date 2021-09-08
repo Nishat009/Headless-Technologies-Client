@@ -3,10 +3,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import "./ShowMeme.css";
 import { GridListTile, Grid, GridList } from "@material-ui/core";
+import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
 
-
-const ShowMeme = () => {
+const ShowMeme = (props) => {
   const [gallery, setGallery] = useState([]);
+  const getGridListCols = () => {
+    if (isWidthUp("lg", props.width)) {
+      return 3;
+    }
+
+    if (isWidthUp("md", props.width)) {
+      return 3;
+    }
+
+    return 1;
+  };
   useEffect(() => {
     fetch(`https://tranquil-forest-75801.herokuapp.com/memes`)
       .then((res) => res.json())
@@ -14,11 +25,6 @@ const ShowMeme = () => {
         setGallery(data);
       });
   }, []);
-  // useEffect(() => {
-  //   fetch("https://tranquil-forest-75801.herokuapp.com/memes")
-  //     .then((res) => res.json())
-  //     .then((data) => setGallery(data));
-  // }, []);
 
   const handleDelete = (id) => {
     fetch(`https://tranquil-forest-75801.herokuapp.com/deleteMemes/${id}`, {
@@ -39,53 +45,29 @@ const ShowMeme = () => {
   };
 
   return (
-    // <GridList   cols={3} style={{ width: "100%", height: "100%" }} >
-    //     {gallery.map((data) => (
-    //       <GridListTile  key={data.id} cols={data.cols || 1}>
-    //         <img md={4} sm={6} xs={12}  src={data.imageURL || data.link} alt={data.title} />
-    //         <small>
-    //         <FontAwesomeIcon
-    //           onClick={() => handleDelete(data._id)}
-    //           size="2x"
-    //           className="delete-icon"
-    //           icon={faTrash}
-    //         />
-    //       </small>
-    //       </GridListTile>
-    //     ))}
-    //   </GridList>
-<div>
-<GridList   cols={3}>
-      {gallery.map((item) => (
-    
-          
-          <GridListTile item colsSm={12}  key={item.id} cols={item.cols || 1}>
-            {/* <h1>Time:{new Date(item.time).toDateString()}</h1> */}
-          <img
-            className="show p-1 m-auto "
-            style={{ height: "300px", width: "100%" }}
-            src={item.imageURL || item.link}
-            alt=""
-          />
-          <small>
-            <FontAwesomeIcon
-              onClick={() => handleDelete(item._id)}
-              size="2x"
-              className="delete-icon"
-              icon={faTrash}
+    <div className="">
+      <GridList cols={getGridListCols()}>
+        {gallery.map((item) => (
+          <GridListTile item key={item.id} cols={item.cols}>
+            <img
+              className=" p-1 mx-auto "
+              style={{ height: "300px" }}
+              src={item.imageURL || item.link}
+              alt=""
             />
-          
-          </small> 
-        </GridListTile>
-     
-     
-    
-     
-      ))}
-    </GridList> 
-    
-</div>
+            <small>
+              <FontAwesomeIcon
+                onClick={() => handleDelete(item._id)}
+                size="2x"
+                className="delete-icon"
+                icon={faTrash}
+              />
+            </small>
+          </GridListTile>
+        ))}
+      </GridList>
+    </div>
   );
 };
 
-export default ShowMeme;
+export default withWidth()(ShowMeme);

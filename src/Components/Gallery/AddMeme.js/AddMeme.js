@@ -37,11 +37,14 @@ const AddMeme = () => {
     const memesData = {
       imageURL: imageURL,
       cols: e.target.cols.value,
-     time: new Date()
+      time: new Date().toDateString(),
     };
 
     try {
-      const res = await axios.post("https://tranquil-forest-75801.herokuapp.com/addMeme", memesData);
+      const res = await axios.post(
+        "https://tranquil-forest-75801.herokuapp.com/addMeme",
+        memesData
+      );
       if (res) {
         setDbStatus(res);
         e.target.reset();
@@ -57,10 +60,14 @@ const AddMeme = () => {
     const memeData = {
       link: e.target.link.value,
       cols: e.target.cols.value,
+      time: new Date().toDateString(),
     };
 
     try {
-      const res = await axios.post("https://tranquil-forest-75801.herokuapp.com/addMeme", memeData);
+      const res = await axios.post(
+        "https://tranquil-forest-75801.herokuapp.com/addMeme",
+        memeData
+      );
       if (res) {
         setDbStat(res);
         e.target.reset();
@@ -76,7 +83,7 @@ const AddMeme = () => {
     <div className="container mt-4">
       <div className=" row">
         <form class="  col-md-6 d-flex mb-2 " onSubmit={handle}>
-          <div style={{width:"75px"}}>
+          <div style={{ width: "75px" }}>
             <input
               required
               type="number"
@@ -88,7 +95,7 @@ const AddMeme = () => {
               placeholder="cols"
             />
           </div>
-           <div className=" w-50 ">
+          <div className=" w-50 ">
             <input
               required
               type="text"
@@ -98,7 +105,7 @@ const AddMeme = () => {
               placeholder="Link....."
             />
           </div>
-         
+
           <div>
             <button type="submit" class="btn btn-secondary">
               Add Meme
@@ -107,7 +114,7 @@ const AddMeme = () => {
         </form>
 
         <form className="col-md-6 d-flex" onSubmit={handleSubmit}>
-        <div style={{width:"75px"}}>
+          <div style={{ width: "75px" }}>
             <input
               required
               type="number"
